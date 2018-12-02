@@ -29,7 +29,7 @@ Increasing length of a `VARCHAR` is free.
 
 ### Types
 
-#### Use a descriptive type
+#### Use descriptive types
 
 IP as `CIDR`
 
@@ -54,6 +54,18 @@ Over `HSTORE` and `JSON`.
 #### Multi-column indexes cover left fields
 
 > A multicolumn B-tree index can be used with query conditions that involve any subset of the index's columns, but the index is most efficient when there are constraints on the leading (leftmost) columns.
+
+#### Remember `UNIQUE` indexes
+
+#### Index on expressions
+
+``` sql
+WHERE shard_id % 5 = CONSUMER_ID
+```
+
+``` sql
+CREATE INDEX jobs_shard_id_5 ON jobs ((shard_id % 5));
+```
 
 ## Building applications on Postgres
 
@@ -83,10 +95,18 @@ Use partitioning.
 
 ### Introspection
 
+#### `pg_locks`
+
+https://wiki.postgresql.org/wiki/Lock_Monitoring
+
 #### `pg_stat_activity`
+
+#### `pg_stat_statements`
 
 ### Tooling
 
 #### Learn psql
+
+#### Know the basic commands
 
 [manual]: https://
