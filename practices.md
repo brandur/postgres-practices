@@ -93,6 +93,14 @@ Use partitioning.
 
 #### Full table locks
 
+* Changing a data type.
+* Adding foreign keys.
+
+	``` sql
+	ALTER TABLE distributors ADD CONSTRAINT distfk FOREIGN KEY (address) REFERENCES addresses (address) NOT VALID;
+	ALTER TABLE distributors VALIDATE CONSTRAINT distfk;
+	```
+
 ### Introspection
 
 #### `pg_locks`
